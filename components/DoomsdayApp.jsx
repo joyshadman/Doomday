@@ -8,6 +8,8 @@ const emptyMovie = { title: '', releaseYear: '', runtimeMinutes: '', prerequisit
 function MovieRow({ movie, movies, reload, onError }) {
   const [prerequisites, setPrerequisites] = useState(movie.prerequisites);
 
+  useEffect(() => setPrerequisites(movie.prerequisites), [movie.prerequisites]);
+
   async function toggleWatched() {
     try {
       await api.patchMovie(movie.id, { watched: !movie.watched });
@@ -33,7 +35,7 @@ function MovieRow({ movie, movies, reload, onError }) {
           <strong>{movie.title}</strong>
           <small>{movie.releaseYear} · {movie.runtimeMinutes} min</small>
         </div>
-        <button className={movie.watched ? 'button success' : 'button'} onClick={toggleWatched}>
+        <button type="button" className={movie.watched ? 'button success' : 'button'} onClick={toggleWatched}>
           {movie.watched ? 'Watched' : 'Mark watched'}
         </button>
       </div>
@@ -51,7 +53,8 @@ function MovieRow({ movie, movies, reload, onError }) {
             {item.title}
           </label>
         ))}
-        <button className="button small" onClick={savePrerequisites}>Save prerequisites</button>
+        <button type="button" className="button small" onClick={() => setPrerequisites([])}>Clear all</button>
+        <button type="button" className="button small" onClick={savePrerequisites}>Save prerequisites</button>
       </div>
     </div>
   );
@@ -266,9 +269,9 @@ export default function DoomsdayApp() {
         <h1>Doomsday Ready</h1>
         <p>Catch up on the MCU, then book your opening night seats.</p>
         <nav className="tabs">
-          <button className={tab === 'movies' ? 'tab active' : 'tab'} onClick={() => setTab('movies')}>Movies</button>
-          <button className={tab === 'plan' ? 'tab active' : 'tab'} onClick={() => setTab('plan')}>Rewatch Plan</button>
-          <button className={tab === 'booking' ? 'tab active' : 'tab'} onClick={() => setTab('booking')}>Booking</button>
+          <button type="button" className={tab === 'movies' ? 'tab active' : 'tab'} onClick={() => setTab('movies')}>Movies</button>
+          <button type="button" className={tab === 'plan' ? 'tab active' : 'tab'} onClick={() => setTab('plan')}>Rewatch Plan</button>
+          <button type="button" className={tab === 'booking' ? 'tab active' : 'tab'} onClick={() => setTab('booking')}>Booking</button>
         </nav>
       </header>
       {error && <div className="error" onClick={() => setError('')}>{error} (click to dismiss)</div>}

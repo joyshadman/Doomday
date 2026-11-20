@@ -39,7 +39,6 @@ I used an AI assistant to plan the work, scaffold the Next.js project, write the
 * Data lives in `data/store.json`, created and seeded on first run. This keeps the assessment easy to run with no database setup.
 * The sample movies and runtimes are from the brief table or reasonable placeholders. They are not an official watch guide.
 * Avengers Doomsday is included as a movie with a sample runtime so a plan can be requested for it.
-* There is no login. The brief does not ask for one.
 
 ## Data model
 
