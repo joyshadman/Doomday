@@ -20,12 +20,13 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 
 ## Foundations
 
-### 1. Next.js setup and data shape
+### 1. Next.js setup and data shape · assumed decision (spec 0001)
 
 Scaffold a Next.js app with the App Router and route handlers under `app/api`. Keep movies and cinemas in a small store with the fields the brief asks for, so later slices build on real data.
 
 **Done when:** one Next.js command starts the pages and the API, the production build passes, and movies and cinemas can be created and read with unique names and prerequisite links.
 - [x] Build it: `/develop Next.js setup and data shape`
+Spec 0001 · code in `lib/store.mjs`
 
 ## Slice 1: Movie management
 

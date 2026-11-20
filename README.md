@@ -33,6 +33,8 @@ Docker bonus:
 docker compose up --build
 ```
 
+On Vercel the app writes its JSON store to the system temp folder, so the API works at https://doomday-taupe.vercel.app. That storage is temporary and is not shared between server instances. Local runs keep using `data/store.json`. Set `DATA_DIR` if you want another folder.
+
 ## How AI was used
 
 I used an AI assistant to plan the work, scaffold the Next.js project, write the React pages, and check the example results from the assessment brief. The two core algorithms, cycle detection in `lib/logic.mjs` and the bundle quote in the same file, are written directly with plain JavaScript. No library solves either feature. I verified the expected results from the brief by running the functions and by calling the live API.
@@ -43,7 +45,7 @@ I used an AI assistant to plan the work, scaffold the Next.js project, write the
 * Prerequisites are stored as movie ids, so renaming a movie does not break links. Duplicate ids are ignored and unknown ids are rejected.
 * A movie can depend on movies that are already watched. The rewatch plan still lists them and marks them as watched.
 * For an equal number of bundles, the quote keeps the combination found first, with smaller sizes considered first. Any minimal combination is valid.
-* Data lives in `data/store.json`, created and seeded on first run. This keeps the assessment easy to run with no database setup.
+* Data lives in `data/store.json` locally and in the system temp folder on Vercel, created and seeded on first run. This keeps the assessment easy to run with no database setup.
 * The sample movies and runtimes are from the brief table or reasonable placeholders. They are not an official watch guide.
 * Avengers Doomsday is included as a movie with a sample runtime so a plan can be requested for it.
 
