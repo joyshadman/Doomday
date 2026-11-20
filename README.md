@@ -20,6 +20,13 @@ npm run build
 npm start
 ```
 
+Check every assessment requirement:
+
+```bash
+npm run build
+node scripts/verify.mjs
+```
+
 Docker bonus:
 
 ```bash
